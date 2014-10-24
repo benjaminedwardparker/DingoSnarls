@@ -1,0 +1,9 @@
+<h1>Timeline#list_all</h1>
+
+<% @snarls.each do |snarl| %>
+  <li>
+    <strong><%= snarl.dingo.name %></strong> Snarls:
+    <em><%= snarl.post %></em>
+    <%= link_to "About Dingo", about_user_path(id: snarl.dingo.id) %>
+  </li>
+<% end %>
