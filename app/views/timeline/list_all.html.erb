@@ -4,6 +4,7 @@
   <li>
     <strong><%= snarl.dingo.name %></strong> Snarls:
     <em><%= snarl.post %></em>
-    <%= link_to "About Dingo", about_user_path(id: snarl.dingo.id) %>
+    <span><%= snarl.created_at %></span>
+    <%= link_to "About this Dingo", about_user_path(id: snarl.dingo.id) %>
   </li>
 <% end %>

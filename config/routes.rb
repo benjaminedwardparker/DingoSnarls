@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get 'about_user' => "profile#about_user"
 
+  get  'new_snarl' => "profile#new_snarl"
+  post 'new_snarl' => "profile#create_new_snarl"
+
   get 'timeline/list_all'
 
   get 'timeline/list_friends'

@@ -5,4 +5,15 @@
 <p> Age: <%= @dingo.age %></p>
 <p> Habitat: <%= @dingo.habitat %></p>
 
+<%= link_to "Issue Snarl", new_snarl_path(dingo_id: @dingo.id) %>
+
+<% @snarls.each do |snarl| %>
+  <li>
+    <strong><%= snarl.dingo.name %></strong> Snarls:
+    <em><%= snarl.post %></em> at:
+    <span><%= snarl.created_at %></span>
+  </li>
+<% end %>
+
+
 <%= link_to "Back to All Snarls List", root_path %>

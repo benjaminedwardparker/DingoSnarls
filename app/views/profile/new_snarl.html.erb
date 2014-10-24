@@ -1,0 +1,10 @@
+<p> New Snarl for <%= @dingo.name %>:</p>
+
+<%= form_for @new_snarl, url: new_snarl_path(dingo_id: @dingo.id) do |f| %>
+  <div>
+    <%= f.label :post %>
+    <%= f.text_field :post %>
+  <div>
+    <%= f.submit "Post Snarl" %>
+  </div>
+<% end %>
