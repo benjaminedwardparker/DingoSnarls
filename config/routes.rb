@@ -6,15 +6,17 @@ Rails.application.routes.draw do
   get  'new_snarl' => "profile#new_snarl"
   post 'new_snarl' => "profile#create_new_snarl"
 
+  post 'sessions' => "sessions#create"
+  get 'sessions/sign_in' => "sessions#sign_in", as: "sign_in"
+
+  delete 'sign_out' => "sessions#sign_out", as: "sign_out"
+
+  get 'sign_up' => "sessions#sign_up", as: "sign_up"
+  post 'sign_up' => "sessions#create_dingo", as: "create_dingo"
+
   get 'timeline/list_all'
 
   get 'timeline/list_friends'
-
-  get 'profile/sign_in'
-
-  get 'profile/sign_up'
-
-  get 'profile/about_user'
 
   get 'profile/about_others'
 

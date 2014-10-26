@@ -1,14 +1,9 @@
 class ProfileController < ApplicationController
-  def sign_in
-  end
 
-  def sign_up
-  end
 
   def about_user
     @dingo = Dingo.find(params[:id])
-    @snarls = Snarl.where(dingo_id: params[:id])
-    @snarls = @snarls.sort { |a,b| b.created_at <=> a.created_at }
+    @snarls = Snarl.where(dingo_id: params[:id]).order("created_at DESC")
   end
 
   def new_snarl

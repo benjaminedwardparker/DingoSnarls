@@ -1,10 +1,10 @@
-<h1>Timeline#list_all</h1>
+<h1>All the Snarls, starting with most recent:</h1>
 
 <% @snarls.each do |snarl| %>
   <li>
     <strong><%= snarl.dingo.name %></strong> Snarls:
     <em><%= snarl.post %></em>
     <span><%= snarl.created_at %></span>
-    <%= link_to "About this Dingo", about_user_path(id: snarl.dingo.id) %>
+    <%= link_to "About #{snarl.dingo.name}", about_user_path(id: snarl.dingo.id) %>
   </li>
 <% end %>
