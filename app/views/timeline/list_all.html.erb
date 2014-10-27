@@ -1,10 +1,23 @@
 <h1>All the Snarls, starting with most recent:</h1>
 
-<% @snarls.each do |snarl| %>
-  <li>
-    <strong><%= snarl.dingo.name %></strong> Snarls:
-    <em><%= snarl.post %></em>
-    <span><%= snarl.created_at %></span>
-    <%= link_to "About #{snarl.dingo.name}", about_user_path(id: snarl.dingo.id) %>
-  </li>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Dingo</th>
+      <th>Snarl</th>
+      <th>at:</th>
+      <th colspan="1"></th>
+    </td>
+  </thead>
+
+  <tbody>
+    <% @snarls.each do |snarl| %>
+      <tr>
+        <td><%= snarl.dingo.name %></td>
+        <td><%= snarl.post %></td>
+        <td><%= snarl.created_at %></td>
+        <td><%= link_to "About #{snarl.dingo.name}", about_user_path(id: snarl.dingo.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
   def sign_in
     if session[:message].present?
       @message = session[:message]
+      session[:message] = nil
     else
       @message = ''
     end
@@ -38,7 +39,12 @@ class SessionsController < ApplicationController
   end
 
   def create_dingo
-    @dingo = Dingo.new(params.require(:dingo).permit(:name, :password, :password_confirmation))
+    @dingo = Dingo.new(params.require(:dingo).permit(:name,
+                                                     :password,
+                                                     :password_confirmation,
+                                                     :age,
+                                                     :habitat,
+                                                     :photo_url))
     if @dingo.save
       session[:dingo_id] = @dingo.id
       redirect_to root_path

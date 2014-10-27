@@ -1,19 +1,45 @@
-<h1>Profile#about_user</h1>
+<h1>About This Dingo</h1>
 <p></p>
 
 <p> Dingo name: <%= @dingo.name %></p>
 <p> Age: <%= @dingo.age %></p>
 <p> Habitat: <%= @dingo.habitat %></p>
+<% if @dingo.photo_url.present? %>
+<img src=<%=@dingo.photo_url%> height=140 width=140px></br>
+<%end%>
 
-<%= link_to "Issue Snarl", new_snarl_path(dingo_id: @dingo.id) %>
-
-<% @snarls.each do |snarl| %>
-  <li>
-    <strong><%= snarl.dingo.name %></strong> Snarls:
-    <em><%= snarl.post %></em> at:
-    <span><%= snarl.created_at %></span>
-  </li>
+<% if session[:dingo_id].present? %>
+  <%= link_to "Issue Snarl", new_snarl_path(dingo_id: @dingo.id) %>
 <% end %>
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Dingo</th>
+      <th>Snarl</th>
+      <th>at:</th>
+    </th>
+  </thead>
+
+  <tbody>
+    <% @snarls.each do |snarl| %>
+      <tr>
+        <td><%= snarl.dingo.name %></td>
+        <td><%= snarl.post %></td>
+        <td><%= snarl.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @buttsniffees.any? %>
+ <h3><%=@dingo.name%> is following:</h3>
+  <%@buttsniffees.each do |buttsniffee|%>
+  <ul><%=buttsniffee.name%></ul>
+ <% end %>
+<% end %>
+
+<br>
+<br>
 
 <%= link_to "Back to All Snarls List", root_path %>
