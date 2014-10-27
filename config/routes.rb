@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'timeline#list_all'
+  root 'timeline#list_friends'
 
   get 'about_user' => "profile#about_user"
 
@@ -14,9 +14,12 @@ Rails.application.routes.draw do
   get 'sign_up' => "sessions#sign_up", as: "sign_up"
   post 'sign_up' => "sessions#create_dingo", as: "create_dingo"
 
-  get 'timeline/list_all'
+  post 'create_buttsniff' => "profile#create_buttsniff", as: "create_buttsniff"
+  post 'destroy_buttsniff' => "profile#destroy_buttsniff", as: "destroy_buttsniff"
 
-  get 'timeline/list_friends'
+  get 'timeline/list_all' => "timeline#list_all", as: "list_all"
+
+  get 'timeline/list_friends' => "timeline#list_friends", as: "user_timeline"
 
   get 'profile/about_others'
 

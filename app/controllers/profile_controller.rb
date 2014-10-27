@@ -28,6 +28,19 @@ class ProfileController < ApplicationController
     end
   end
 
+  def create_buttsniff
+    @new_buttsniff = Buttsniff.new(dingo_id: session[:dingo_id], buttsniffee_id: params[:buttsniffee_id])
+    if @new_buttsniff.save
+      redirect_to about_user_path(id: session[:dingo_id])
+    else
+      redirect_to about_user_path(id: params[:buttsniffee_id])
+    end
+  end
+
+  def destroy_buttsniff
+    Buttsniff.find_by(dingo_id: params[:dingo_id], buttsniffee_id: params[:buttsniffee_id]).destroy
+    redirect_to about_user_path(id: params[:dingo_id])
+  end
 
   def about_others
   end

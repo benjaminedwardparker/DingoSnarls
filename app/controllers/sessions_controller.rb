@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     if @dingo.password == password
       session[:dingo_id] = @dingo.id
       current_dingo
-      redirect_to root_path
+      redirect_to user_timeline_path
     else
       session[:message] = "Incorrect Dingo Name or Password"
       redirect_to sign_in_path

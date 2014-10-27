@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-joe = Dingo.create(name: "Joe", habitat: "Plains", password: "12345", age: 4)
-tina = Dingo.create(name: "Tina", habitat: "Desert", password: "pword", age: 3)
+Dingo.create(name: "Joe", habitat: "Plains", password: "12345", age: 4)
+Dingo.create(name: "Tina", habitat: "Desert", password: "pword", age: 3)
 
 Snarl.create(dingo_id: 1, post: "I just ate a baby", created_at: 14.minutes.ago)
 Snarl.create(dingo_id: 1, post: "I'm about to take a nap", created_at: 20.minutes.ago)

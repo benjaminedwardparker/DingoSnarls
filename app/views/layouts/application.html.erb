@@ -30,7 +30,13 @@
  <br>
  <p>The Dingos:</p>
   <% Dingo.all.each do |dingo| %>
-    <%= link_to dingo.name, about_user_path(id: dingo.id)%><br/>
+    <%= link_to dingo.name, about_user_path(id: dingo.id)%>
+    <% if dingo.photo_url? %>
+      <img src=<%=dingo.photo_url%> height=90 width=90px><br/>
+    <% else %>
+      <br/>
+    <% end %>
+
   <% end %>
 </footer>
 </body>

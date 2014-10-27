@@ -1,2 +1,25 @@
-<h1>Timeline#list_friends</h1>
-<p>Find me in app/views/timeline/list_friends.html.erb</p>
+<h1>Your snarls + the snarls of the dingoes whose butts you're sniffin':</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Dingo</th>
+      <th>Snarl</th>
+      <th>at:</th>
+      <th colspan="1"></th>
+    </td>
+  </thead>
+
+  <tbody>
+    <% @snarls.each do |snarl| %>
+      <tr>
+        <td><%= snarl.dingo.name %></td>
+        <td><%= snarl.post %></td>
+        <td><%= snarl.created_at %></td>
+        <td><%= link_to "About #{snarl.dingo.name}", about_user_path(id: snarl.dingo.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "All Snarls of every Dingo", list_all_path %>

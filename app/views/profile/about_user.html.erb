@@ -32,14 +32,26 @@
   </tbody>
 </table>
 
+<% if session[:dingo_id] != @dingo.id %>
+  <%= link_to "Buttsniff (follow) #{@dingo.name}", create_buttsniff_path(buttsniffee_id: @dingo.id), method: :post %>
+<% end %>
+
 <% if @buttsniffees.any? %>
- <h3><%=@dingo.name%> is following:</h3>
-  <%@buttsniffees.each do |buttsniffee|%>
-  <ul><%=buttsniffee.name%></ul>
+ <h3><%=@dingo.name%> is sniffing the butts of:</h3>
+  <% @buttsniffees.each do |buttsniffee|%>
+    <ul>
+      <%=buttsniffee.name%>
+      <% if buttsniffee.photo_url? %>
+        <img src=<%=buttsniffee.photo_url%> height=90 width=90px></br>
+      <% end %>
+      <% if session[:dingo_id] == @dingo.id %>
+        <%= button_to "Stop sniffing #{buttsniffee.name}", destroy_buttsniff_path(dingo_id: @dingo.id, buttsniffee_id: buttsniffee.id), method: :post %>
+      <% end %>
+    </ul>
  <% end %>
 <% end %>
 
 <br>
 <br>
 
-<%= link_to "Back to All Snarls List", root_path %>
+<%= link_to "Back to Timeline", root_path %>
