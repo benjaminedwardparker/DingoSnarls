@@ -16,7 +16,12 @@
 
 </head>
 <body>
-
+<div style =
+  "background: url(http://www.desktopwallpaperhd.net/wallpapers/2/a/nature-wallpaper-desert-alone-tree-27610.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover">
  <%= link_to "Home", root_path %>
 
  <% if @current_dingo %>
@@ -38,5 +43,6 @@
     <%= link_to dingo.name, about_user_path(id: dingo.id)%><br/>
   <% end %>
 </footer>
+</div>
 </body>
 </html>
