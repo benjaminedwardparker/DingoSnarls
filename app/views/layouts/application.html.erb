@@ -21,6 +21,7 @@
 
  <% if @current_dingo %>
    <%= "Hey there, #{@current_dingo.name}!" %>
+   <%= link_to "View your profile page", about_user_path(id: @current_dingo.id) %>
    <%= link_to "Sign Out", sign_out_path, method: :delete %>
  <% end %>
 <%= yield %>
@@ -30,13 +31,11 @@
  <br>
  <p>The Dingos:</p>
   <% Dingo.all.each do |dingo| %>
-    <%= link_to dingo.name, about_user_path(id: dingo.id)%>
     <% if dingo.photo_url? %>
-      <img src=<%=dingo.photo_url%> height=90 width=90px><br/>
+      <img src=<%=dingo.photo_url%> height=90 width=135px>
     <% else %>
-      <br/>
     <% end %>
-
+    <%= link_to dingo.name, about_user_path(id: dingo.id)%><br/>
   <% end %>
 </footer>
 </body>

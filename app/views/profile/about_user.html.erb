@@ -5,7 +5,7 @@
 <p> Age: <%= @dingo.age %></p>
 <p> Habitat: <%= @dingo.habitat %></p>
 <% if @dingo.photo_url.present? %>
-<img src=<%=@dingo.photo_url%> height=140 width=140px></br>
+<img src=<%=@dingo.photo_url%> height=140 width=210px></br>
 <%end%>
 
 <% if session[:dingo_id].present? %>
@@ -42,7 +42,7 @@
     <ul>
       <%=buttsniffee.name%>
       <% if buttsniffee.photo_url? %>
-        <img src=<%=buttsniffee.photo_url%> height=90 width=90px></br>
+        <img src=<%=buttsniffee.photo_url%> height=90 width=135px></br>
       <% end %>
       <% if session[:dingo_id] == @dingo.id %>
         <%= button_to "Stop sniffing #{buttsniffee.name}", destroy_buttsniff_path(dingo_id: @dingo.id, buttsniffee_id: buttsniffee.id), method: :post %>
