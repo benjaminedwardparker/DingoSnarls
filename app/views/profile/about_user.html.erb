@@ -32,8 +32,8 @@
   </tbody>
 </table>
 
-<% if session[:dingo_id] != @dingo.id %>
-  <%= link_to "Buttsniff (follow) #{@dingo.name}", create_buttsniff_path(buttsniffee_id: @dingo.id), method: :post %>
+<% if session[:dingo_id] != @dingo.id && !@current_dingo.buttsniffees.include?(@dingo) %>
+  <%= button_to "Buttsniff (follow) #{@dingo.name}", create_buttsniff_path(buttsniffee_id: @dingo.id), method: :post %>
 <% end %>
 
 <% if @buttsniffees.any? %>

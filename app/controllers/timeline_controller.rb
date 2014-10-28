@@ -14,12 +14,16 @@ class TimelineController < ApplicationController
   end
 
   def list_friends
-    current_dingo
-    @snarls = @current_dingo.snarls
-    current_dingo.buttsniffees.each do |buttsniffee|
-      @snarls += buttsniffee.snarls
-    end
-    @snarls = @snarls.sort { |a,b| b.created_at <=> a.created_at }
+
+    dingo_ids = current_dingo.buttsniffees.pluck(:id) + [current_dingo.id]
+    @snarls = Snarl.where(dingo_id: dingo_ids).order("created_at desc").page(params[:page])
+
+    # current_dingo
+    # @snarls = @current_dingo.snarls
+    # current_dingo.buttsniffees.each do |buttsniffee|
+    #   @snarls += buttsniffee.snarls
+    # end
+    # @snarls = @snarls.sort { |a,b| b.created_at <=> a.created_at }
     #@snarls.page(params[:page])
   end
 end
